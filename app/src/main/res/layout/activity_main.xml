@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
+<com.airbnb.lottie.LottieAnimationView
+    android:layout_width="0dp"
+    android:layout_height="200dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:lottie_rawRes="@raw/fireworksicon"
+    android:id="@+id/lottie_view"
+    app:layout_constraintTop_toTopOf="parent"/>
     <TextView
         android:id="@+id/remainMinutesTextView"
         android:layout_width="wrap_content"

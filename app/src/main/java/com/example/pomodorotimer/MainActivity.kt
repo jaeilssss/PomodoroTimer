@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.SeekBar
 import android.widget.TextView
+import com.airbnb.lottie.LottieAnimationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,8 +32,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
         bindViews()
 
         initSounds()
@@ -60,6 +59,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun showTime(){
+        var animation = findViewById<LottieAnimationView>(R.id.lottie_view)
+        animation.setAnimation(R.raw.fireworksicon)
+        animation.playAnimation()
+    }
     private fun initSounds(){
         tickingSoundId = soundPool.load(this,R.raw.timer_ticking,1)
         bellSoundId = soundPool.load(this,R.raw.timer_bell,1)
@@ -68,6 +72,7 @@ class MainActivity : AppCompatActivity() {
          object : CountDownTimer(initialMililis,1000L){
             override fun onFinish() {
                 completeCountDown()
+                showTime()
             }
 
             override fun onTick(p0: Long) {
