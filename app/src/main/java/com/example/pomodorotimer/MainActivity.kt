@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         bindViews()
-
         initSounds()
     }
     private fun bindViews(){
@@ -47,12 +46,10 @@ class MainActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(p0: SeekBar?) {
                 countDownTimer?.cancel()
                 countDownTimer =null
-
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
                 seekbar ?: return
-
                 startCountDown()
             }
 
@@ -96,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun updateRemainTime(remainMillis : Long) {
         val remainSeconds = remainMillis / 1000
-        remainMinutesTextView.text="%02d".format(remainSeconds/60)
+        remainMinutesTextView.text="%02d'".format(remainSeconds/60)
         remainSecondeTextView.text = "%02d".format(remainSeconds % 60)
     }
 
