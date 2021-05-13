@@ -44,18 +44,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
-                countDownTimer?.cancel()
-                countDownTimer =null
+               stopCountDownTimer()
             }
 
             override fun onStopTrackingTouch(p0: SeekBar?) {
                 seekbar ?: return
-                startCountDown()
+
+                if(seekbar.progress==0){
+                    startCountDown()
+                }else{
+                    startCountDown()
+
+                }
             }
 
         })
     }
-
+    private fun stopCountDownTimer(){
+        countDownTimer?.cancel()
+        countDownTimer =null
+        soundPool.autoPause()
+    }
     private fun showTime(){
         var animation = findViewById<LottieAnimationView>(R.id.lottie_view)
         animation.setAnimation(R.raw.fireworksicon)
